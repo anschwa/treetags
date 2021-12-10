@@ -1,0 +1,51 @@
+* Tree Tags
+Hassle free code navigation for the rest of us.
+
+** Motivation
+The growing adoption of language servers have revolutionized the way
+we write software. However this has also contributed to the decline of
+generic software tooling.
+
+Personally, I have found most LSP implementations to be far more
+distracting than useful and don't enjoy the "magic" installation and
+configuration process.
+
+In my opinion the most useful thing about LSP is the hassle-free code
+navigation. Previously I've relied on tools like ~grep~ and ~ctags~ to
+do this, but they require continual maintenance to keep indexes
+updated for each project and are not always reliable, not to mention
+the extra work needed to incorporate standard libraries, third-party
+packages, and language built-ins.
+
+** Implementation
+The plan for ~treetags~ is to build an index of definitions
+"on-the-fly" for any given file. This should include definitions for
+language built-ins, the standard library, and any third-party packages
+(assuming they are available on the system).
+
+My hope is that ~tree-sitter~ will be able to provide a robust parsing
+backend for this project and enable accurate, high performance code
+navigation.
+
+It would be great to be able to provide a similar set of operations as LSP:
+- Find definition (definitions and assignments)
+- Find references
+- Rename symbol
+
+** References
+Apparently I'm not the only one with this idea:
+
+- [[https://docs.github.com/en/repositories/working-with-files/using-files/navigating-code-on-github#precise-and-search-based-navigation][Navigating code on GitHub]]
+- [[https://github.blog/2021-12-09-introducing-stack-graphs/][Introducing stack graphs]]
+- [[https://www.youtube.com/watch?v=l2R1PTGcwrE][Incremental, zero-config Code Nav using stack graphs]]
+- [[https://archive.fosdem.org/2020/schedule/event/github_cross_project_code_navigation/][Precise, cross-project code navigation at GitHub scale]]
+
+** FAQ
+- Why not ~cscope~?
+  - Unfortunately ~cscope~ is less ergonomic than ~ctags~ and doesn't
+    support nearly as many languages.
+
+- Why do you hate LSP?
+  - LSP is awesome, you should use it.
+  - However, if you enjoy LSP, you might want to consider using an IDE
+    instead of an esoteric text editor.
